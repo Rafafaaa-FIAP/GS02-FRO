@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./100.ttf');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./100-italic.ttf');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./200.ttf');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./200-italic.ttf');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./300.ttf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./300-italic.ttf');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./400.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./400-italic.ttf');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./500.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./500-italic.ttf');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./600.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./600-italic.ttf');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./700.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./700-italic.ttf');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./800.ttf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./800-italic.ttf');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./900.ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./900-italic.ttf');
+  font-weight: 900;
+  font-style: italic;
+}
