@@ -1,0 +1,91 @@
+@import '../../styles/variables.scss';
+
+div.text-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: text;
+
+  $color: $colors-1-base;
+  $font-size-medium: 1.2rem;
+  $font-size-smaller: calc($font-size-medium * 0.625);
+  $size-s: calc($font-size-medium * 0.26);
+  $size-m: calc($font-size-medium * 0.36);
+  $size-l: calc($font-size-medium * 0.52);
+  $top-active: -55%;
+
+  fieldset {
+    width: 100%;
+    padding: 0 $size-l $size-s 0;
+    border: 0.1rem solid $color;
+    border-radius: $size-s;
+    position: relative;
+    transition: border-color $transition-time, color $transition-time;
+
+    &:has(input:focus) {
+      border-width: 0.2rem;
+      border-color: $color;
+    }
+
+    label, span {
+      padding: 0 $size-s;
+      pointer-events: none;
+    }
+
+    legend {
+      max-width: 0.01px;
+      margin-left: $size-m;
+      font-size: $font-size-smaller;
+      text-wrap: nowrap;
+      opacity: 0;
+      transition: max-width $transition-time;
+    }
+
+    input {
+      width: 97%;
+      border: none;
+      font-size: $font-size-medium;
+      color: $colors-text-primary;
+      outline: none;
+      padding-left: $size-l;
+      background-color: transparent;
+
+      &::placeholder {
+        color: transparent;
+      }
+
+      &:focus+legend, &:not(:placeholder-shown)+legend {
+        max-width: 100%;
+      }
+
+      &:focus~.placeholder {
+        color: $color;
+      }
+
+      &:focus~.placeholder, &:not(:placeholder-shown)~.placeholder {
+        font-size: $font-size-smaller;
+        top: $top-active;
+      }
+
+      &.invalid~.placeholder {
+        color: $colors-semantic-error-base;
+      }
+    }
+
+    .placeholder {
+      margin-left: $size-m;
+      font-size: $font-size-medium;
+      font-weight: 500;
+      color: $color;
+      position: absolute;
+      top: -5%;
+      left: 0;
+      transition: font-size $transition-time, top $transition-time;
+    }
+
+    &:has(input.invalid) {
+      border-width: 2px;
+      border-color: $colors-semantic-error-base;
+    }
+  }
+}

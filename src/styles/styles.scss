@@ -1,0 +1,46 @@
+@import url('../assets/fonts/Poppins/font-face.css');
+@import './variables.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 0.25rem solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+  background-color: $colors-1-base;
+}
+
+body {
+  background-color: $colors-1-dark;
+  color: $colors-text-primary;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+a {
+  transition: color $transition-time;
+  color: $colors-1-base;
+}
+
+a:link, a:visited {
+  color: $colors-1-base;
+}
+
+a:hover {
+  color: $colors-1-light;
+}
+
+a:active {
+  color: $colors-1-light;
+}
