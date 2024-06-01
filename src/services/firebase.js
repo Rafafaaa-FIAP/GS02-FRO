@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, query, child, get, push, set, remove } from 'firebase/database';
+import { getDatabase, ref, query, orderByChild, startAfter, get } from 'firebase/database';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
@@ -19,11 +19,9 @@ export {
   database,
   ref,
   query,
-  child,
+  orderByChild,
+  startAfter,
   get,
-  push,
-  set,
-  remove,
   getAuth,
   onAuthStateChanged,
   createUserWithEmailAndPassword,

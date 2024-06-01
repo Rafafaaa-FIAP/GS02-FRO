@@ -1,5 +1,9 @@
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '../services/firebase';
 
+export function getUserInfos() {
+  return getAuth();
+}
+
 export function checkIsLoggedIn() {
   const auth = getAuth();
   return new Promise(resolve => {

@@ -1,5 +1,5 @@
-import { limitToLast, orderByChild, orderByValue, startAfter, startAt } from 'firebase/database';
-import { database, ref, query, child, get, push, set, remove } from '../services/firebase';
+import { orderByChild, startAfter } from 'firebase/database';
+import { database, ref, query, get } from '../services/firebase';
 
 const refReadings = ref(database, 'leituras/');
 

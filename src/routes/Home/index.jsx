@@ -3,10 +3,8 @@ import './styles.scss'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { logOut } from '../../hooks/useAuth';
+import { getUserInfos, logOut } from '../../hooks/useAuth';
 import { getReadings } from '../../hooks/useReadings';
-
-import ButtonDefault from '../../components/ButtonDefault';
 
 import { Chart as ChartJS, defaults } from 'chart.js/auto';
 import { Bar, Pie, Doughnut, Line } from 'react-chartjs-2';
@@ -23,10 +21,15 @@ defaults.plugins.title.color = '#FFFFFF';
 function Home() {
   const navigate = useNavigate();
 
+  const [userEmail, setUserEmail] = useState('');
   const [readings, setReadings] = useState([]);
 
   const [data, setData] = useState([]);
   const [dataDoughnut, setDataDoughnut] = useState([]);
+
+  useEffect(() => {
+    setUserEmail(getUserInfos().currentUser.email);
+  }, []);
 
   useEffect(() => {
     const sessionObj = JSON.parse(sessionStorage.getItem('teste'));
@@ -96,7 +99,10 @@ function Home() {
 
   return (
     <div id='home-page'>
-      {/* <ButtonDefault text='Sair' onClick={handleLogOut} /> */}
+      <nav>
+        <p id='user-email'>{userEmail}</p>
+        <a onClick={handleLogOut}>Sair</a>
+      </nav>
       {
         !!readings ? (
           <div id="all-charts">
