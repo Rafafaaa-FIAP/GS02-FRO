@@ -1,19 +1,20 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '../services/firebase';
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '../services/firebase';
 
 export function checkIsLoggedIn() {
-  return getAuth().currentUser !== null;
+  const auth = getAuth();
+  return new Promise(resolve => {
+    onAuthStateChanged(auth, (user) => {
+      resolve(!!user);
+    });
+  });
 }
 
 export function createAccount(email, password) {
   const auth = getAuth();
   return createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      return userCredential.user;
-    })
+    return userCredential.user;
+  })
     .catch((error) => {
-      console.log(error);
-      console.log(error.code);
-      console.log(error.message);
-      console.error(error);
       if (['auth/email-already-in-use', 'auth/weak-password'].some(e => e === error.code)) {
         return error.code;
       }
@@ -24,8 +25,8 @@ export function createAccount(email, password) {
 export function logIn(email, password) {
   const auth = getAuth();
   return signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      return userCredential.user;
-    })
+    return userCredential.user;
+  })
     .catch((error) => {
       console.error(error);
       return null;

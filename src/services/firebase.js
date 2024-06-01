@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, query, child, get, push, set, remove } from 'firebase/database';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDR5p_Wi1XpErHBcNDiL-aulHLNFdNeoRA",
@@ -17,6 +17,7 @@ const database = getDatabase(app);
 
 export {
   database,
+  ref,
   query,
   child,
   get,
@@ -24,6 +25,7 @@ export {
   set,
   remove,
   getAuth,
+  onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut

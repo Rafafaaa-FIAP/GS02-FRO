@@ -3,4 +3,37 @@
 div#home-page {
   width: 100%;
   height: 100vh;
+
+  div#all-charts {
+    width: 100%;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    &> div {
+      width: 100%;
+      background-color: $colors-1-darker;
+      padding: 1rem;
+      border-radius: 1rem;
+      display: flex;
+      justify-content: center;
+
+      &.all-columns {
+        grid-column: 1/-1;
+      }
+    }
+  }
+
+  @media (min-width: 901px) {
+    div#all-charts {
+      grid-template-columns: 1fr 1fr;
+
+      &> div {
+        &.all-columns {
+          max-height: 75vh;
+        }
+      }
+    }
+  }
 }

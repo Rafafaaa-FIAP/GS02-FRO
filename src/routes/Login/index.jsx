@@ -13,7 +13,7 @@ import ocean from '../../assets/images/ocean.svg';
 
 function Login(props) {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
-  const [isSigned, setIsSigned] = useState(checkIsLoggedIn());
+  const [isSigned, setIsSigned] = useState(false);
 
   const navigate = useNavigate();
 
@@ -23,9 +23,11 @@ function Login(props) {
     }
   }, [isSigned]);
 
-  useEffect(() => {
-    console.log(loginData);
-  }, [loginData]);
+  function callCheckIsLoggedIn() {
+    checkIsLoggedIn().then((isLoggedIn) => {
+      setIsSigned(isLoggedIn);
+    });
+  }
 
   function handleLoginData() {
     const email = document.querySelector('#email').value;
@@ -70,7 +72,7 @@ function Login(props) {
           toast.error('Login inválido!', { id: 'login' });
         }
 
-        setIsSigned(checkIsLoggedIn());
+        callCheckIsLoggedIn();
       });
     }
   }
@@ -90,7 +92,7 @@ function Login(props) {
           toast.error('Erro ao Cadastrar!', { id: 'login' });
         }
 
-        setIsSigned(checkIsLoggedIn());
+        callCheckIsLoggedIn();
       });
     }
   }
