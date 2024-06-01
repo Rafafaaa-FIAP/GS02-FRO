@@ -1,16 +1,27 @@
 import './styles.scss'
 
+import { useState, useEffect } from 'react';
+
+import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { checkIsLoggedIn, createAccount, logIn } from '../../hooks/useAuth';
+
 import TextField from '../../components/TextField';
 import ButtonDefault from '../../components/ButtonDefault';
 
 import ocean from '../../assets/images/ocean.svg';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import toast from 'react-hot-toast';
 
 function Login(props) {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
+  const [isSigned, setIsSigned] = useState(checkIsLoggedIn());
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSigned) {
+      navigate('/Home');
+    }
+  }, [isSigned]);
 
   useEffect(() => {
     console.log(loginData);
@@ -23,7 +34,7 @@ function Login(props) {
     setLoginData({ email, password });
   }
 
-  function handleLogin() {
+  function checkLoginDataIsInvalid() {
     const email = document.querySelector('#email');
     const password = document.querySelector('#password');
 
@@ -45,14 +56,41 @@ function Login(props) {
       invalid = true;
     }
 
-    if (!invalid) {
-      toast.success('sucesso', {
-        id: 'login',
+    if (invalid) {
+      toast.error('Dados inválidos!', { id: 'login' });
+    }
+
+    return invalid;
+  }
+
+  function handleLogin() {
+    if (!checkLoginDataIsInvalid()) {
+      logIn(loginData.email, loginData.password).then((res) => {
+        if (res === null) {
+          toast.error('Login inválido!', { id: 'login' });
+        }
+
+        setIsSigned(checkIsLoggedIn());
       });
     }
-    else {
-      toast.error('Dados inválidos!', {
-        id: 'login',
+  }
+
+  function handleSignUp() {
+    if (!checkLoginDataIsInvalid()) {
+      createAccount(loginData.email, loginData.password).then((res) => {
+        if (res === 'auth/email-already-in-use') {
+          document.querySelector('#email').classList.add('invalid');
+          toast.error('Email já utilizado em uma conta!', { id: 'login' });
+        }
+        else if (res === 'auth/weak-password') {
+          document.querySelector('#password').classList.add('invalid');
+          toast.error('Senha deve ter mínimo de 6 caracteres!', { id: 'login' });
+        }
+        else if (res === null) {
+          toast.error('Erro ao Cadastrar!', { id: 'login' });
+        }
+
+        setIsSigned(checkIsLoggedIn());
       });
     }
   }
@@ -74,7 +112,7 @@ function Login(props) {
             {
               props.SignUp ? (
                 <>
-                  <ButtonDefault text="Cadastrar" onClick={handleLogin} />
+                  <ButtonDefault text="Cadastrar" onClick={handleSignUp} />
                   <Link to='/Login'>Já possuo uma conta.</Link>
                 </>
               ) : (

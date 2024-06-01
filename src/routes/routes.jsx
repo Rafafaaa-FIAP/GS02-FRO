@@ -1,9 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import { checkIsLoggedIn } from '../hooks/useAuth'
+
 import App from '../App'
 import Error from './Error'
 import Login from './Login'
-import SignUp from './SignUp'
+import Home from './Home'
 
 const router = createBrowserRouter([
   {
@@ -11,14 +13,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <Error />,
     children: [
-      { path: '/', element: <Login /> },
+      { path: '/', element: checkIsLoggedIn() ? <Home /> : <Login /> },
       { path: '/Login', element: <Login /> },
       { path: '/SignUp', element: <Login SignUp={true} /> },
-      // { path: '/Home', element: <Home /> },
-      // { path: '/Instituto', element: <Instituto /> },
-      // { path: '/Exames', element: <Exames /> },
-      // { path: '/AreaKids', element: <AreaKids /> },
-      // { path: '/AreaKids/:exam', element: <AreaKids /> },
+      { path: '/Home', element: <Home /> },
     ]
   },
 ])
