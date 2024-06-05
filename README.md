@@ -1,8 +1,18 @@
-# React + Vite
+<h1 align="center">Global Solution - 2º Semestre - 1º Ano - 1ESPR</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<hr/>
 
-Currently, two official plugins are available:
+<p align="center">
+  <a href="#bulb-Solução">Solução</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#technologist-Integrantes">Integrantes</a>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<hr/>
+
+## :bulb: Solução
+Acesse o site clicando [aqui](https://rafafaaa-fiap.github.io/GS02-FRO).
+
+## :technologist: Integrantes
+* RM 552980 - Danilo Vieira
+* RM 553521 - Rafael Cristofali
